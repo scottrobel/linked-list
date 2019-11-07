@@ -4,6 +4,7 @@ Node = Struct.new :value, :next
 # created a linked list between nodes
 class LinkedList
   attr_reader :head
+
   def initialize
     @head = nil
   end
@@ -45,9 +46,23 @@ class LinkedList
   end
 
   def pop
+    return if @head.nil?
+
     temp = @head
     temp = temp.next until temp.next.next.nil?
     temp.next = nil
+  end
+
+  def contains?(value)
+    return false if @head.nil?
+
+    temp = @head
+    until temp.next.nil?
+      return true if temp.value == value
+
+      temp = temp.next
+    end
+    false
   end
 end
 my_linked_list = LinkedList.new
