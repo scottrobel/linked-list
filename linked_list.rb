@@ -1,8 +1,9 @@
 # frozen_string_literal: true
 
-Node = Struct.new(:value, :next)
+Node = Struct.new :value, :next
 # created a linked list between nodes
 class LinkedList
+  attr_reader :head
   def initialize
     @head = nil
   end
