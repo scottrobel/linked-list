@@ -1,18 +1,27 @@
-Node = Struct.new(:data,:next)
+# frozen_string_literal: true
+
+Node = Struct.new(:value, :next)
+# created a linked list between nodes
 class LinkedList
   def initialize
     @head = nil
   end
-  def append(data)
-    temp = @head
-    if(@head == nil)
-      @head = Node.new(data)
+
+  def append(value)
+    if @head.nil?
+      @head = Node.new(value)
     else
-      until(temp.next == nil) do
-        temp = temp.next
-      end
-      temp.next = Node.new(data)
+      temp = @head
+      temp = temp.next until temp.next.nil?
+      temp.next = Node.new(value)
     end
   end
 
+  def prepend(value)
+    @head = Node.new(value, @head)
+  end
+  
 end
+my_linked_list = LinkedList.new
+my_linked_list.append('some_value')
+my_linked_list.prepend('some_value')
