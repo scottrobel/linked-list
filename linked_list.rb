@@ -104,4 +104,3 @@ class LinkedList
     prev.next = cur.next unless cur.nil?
   end
 end
-
