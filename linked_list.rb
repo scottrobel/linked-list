@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-Node = Struct.new :value, :next
+Node = Struct.new(:value, :next)
 # created a linked list between nodes
 class LinkedList
   attr_reader :head
@@ -74,15 +74,44 @@ class LinkedList
       data_string += "( #{temp.value} ) -> "
       temp = temp.next
     end
-    data_string += "nil"
+    data_string += 'nil'
     data_string
+  end
+
+  def insert_at(index, value)
+    prepend(value) if index.zero?
+    return if head.nil? || index.zero?
+
+    prev = nil
+    cur = @head
+    index.times do
+      prev = cur
+      cur = cur.next
+    end
+    prev.next = Node.new(value, cur) unless cur.nil?
+  end
+
+  def remove_at(index)
+    prepend(value) if index.zero?
+    return if head.nil? || index.zero?
+
+    prev = nil
+    cur = @head
+    index.times do
+      prev = cur
+      cur = cur.next
+    end
+    prev.next = cur.next unless cur.nil?
   end
 end
 my_linked_list = LinkedList.new
 my_linked_list.append('1')
 my_linked_list.append('2')
 my_linked_list.append('3')
-my_linked_list.prepend('4')
-puts my_linked_list.contains?('1')
-puts my_linked_list.at(2)
+puts my_linked_list
+my_linked_list.insert_at(2, '0')
+puts my_linked_list
+my_linked_list.remove_at(2)
+puts my_linked_list
+my_linked_list.remove_at(2)
 puts my_linked_list
