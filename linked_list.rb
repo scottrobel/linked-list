@@ -8,13 +8,17 @@ class LinkedList
     @head = nil
   end
 
+  def tail
+    temp = @head
+    temp = temp.next until temp.next.nil?
+    temp
+  end
+
   def append(value)
     if @head.nil?
       @head = Node.new(value)
     else
-      temp = @head
-      temp = temp.next until temp.next.nil?
-      temp.next = Node.new(value)
+      tail.next = Node.new(value)
     end
   end
 
