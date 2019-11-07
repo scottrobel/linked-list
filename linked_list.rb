@@ -104,14 +104,4 @@ class LinkedList
     prev.next = cur.next unless cur.nil?
   end
 end
-my_linked_list = LinkedList.new
-my_linked_list.append('1')
-my_linked_list.append('2')
-my_linked_list.append('3')
-puts my_linked_list
-my_linked_list.insert_at(2, '0')
-puts my_linked_list
-my_linked_list.remove_at(2)
-puts my_linked_list
-my_linked_list.remove_at(2)
-puts my_linked_list
+
