@@ -40,7 +40,7 @@ class LinkedList
   def at(index)
     temp = @head
     index.times do
-      temp = temputsp.next
+      temp = temp.next
     end
     temp
   end
@@ -64,10 +64,25 @@ class LinkedList
     end
     false
   end
+
+  def to_s
+    return 'nil' if @head.nil?
+
+    temp = @head
+    data_string = ''
+    until temp.nil?
+      data_string += "( #{temp.value} ) -> "
+      temp = temp.next
+    end
+    data_string += "nil"
+    data_string
+  end
 end
 my_linked_list = LinkedList.new
 my_linked_list.append('1')
 my_linked_list.append('2')
 my_linked_list.append('3')
-my_linked_list.append('4')
+my_linked_list.prepend('4')
+puts my_linked_list.contains?('1')
+puts my_linked_list.at(2)
 puts my_linked_list
