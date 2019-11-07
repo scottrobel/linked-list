@@ -17,7 +17,7 @@ class LinkedList
 
   def append(value)
     if @head.nil?
-      prepend(Node.new(value))
+      prepend(value)
     else
       tail.next = Node.new(value)
     end
@@ -40,7 +40,7 @@ class LinkedList
   def at(index)
     temp = @head
     index.times do
-      temp = temp.next
+      temp = temputsp.next
     end
     temp
   end
@@ -66,7 +66,8 @@ class LinkedList
   end
 end
 my_linked_list = LinkedList.new
-my_linked_list.append('some_value')
-my_linked_list.append('some_value')
-my_linked_list.prepend('some_value')
-puts my_linked_list.at(1)
+my_linked_list.append('1')
+my_linked_list.append('2')
+my_linked_list.append('3')
+my_linked_list.append('4')
+puts my_linked_list
